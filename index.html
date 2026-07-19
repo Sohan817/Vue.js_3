@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Hello Vue :)</h1>
+    <div id="app">
+      <div v-if="showBooks">
+        <h4>{{ bookName }}-{{ author }}-{{ age }}</h4>
+      </div>
+      <!--Click event-->
+      <button v-on:click="age++">Increase Age</button>
+      <button v-on:click="age--">Decrease Age</button>
+      <div @click="changeTitle('Bango Boltu Attojiboni')">Change Title</div>
+
+      <!--Conditional Rendering-->
+      <button v-on:click="toggleShowBooks">
+        <span v-if="showBooks">Hide Books</span>
+        <span v-else>Show Books</span>
+      </button>
+      <div v-show="showBooks">The Books is showing</div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
