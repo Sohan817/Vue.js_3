@@ -1,0 +1,8 @@
+.box {
+  width: 400px;
+  padding: 100px 0;
+  background-color: lightgray;
+  margin: 20px;
+  text-align: center;
+  display: inline-block;
+}

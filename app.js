@@ -7,6 +7,8 @@ const app = Vue.createApp({
       bookName: "The Alchemist",
       author: "Paulo Coelho",
       age: 1988,
+      x: 0,
+      y: 0,
     };
   },
   methods: {
@@ -16,6 +18,16 @@ const app = Vue.createApp({
 
     toggleShowBooks() {
       this.showBooks = !this.showBooks;
+    },
+    handleMouseEvent(e, data) {
+      console.log(e);
+      if (data) {
+        console.log(data);
+      }
+    },
+    handleMouseMove(e) {
+      this.x = e.offsetX;
+      this.y = e.offsetY;
     },
   },
 });

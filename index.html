@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <script src="https://unpkg.com/vue@3.0.2"></script>
     <title>Document</title>
   </head>
@@ -23,6 +24,14 @@
         <span v-else>Show Books</span>
       </button>
       <div v-show="showBooks">The Books is showing</div>
+
+      <!--Mouse Events-->
+      <div class="box" @mouseover="handleMouseEvent($event,5)">Mouse Over</div>
+      <div class="box" @mouseleave="handleMouseEvent">Mouse Leave</div>
+      <div class="box" @dblclick="handleMouseEvent">Double Click</div>
+      <div class="box" @mousemove="handleMouseMove">
+        Position: {{ x }}, {{ y }}
+      </div>
     </div>
     <script src="app.js"></script>
   </body>
