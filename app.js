@@ -3,6 +3,7 @@ const app = Vue.createApp({
   //template: "<h1>I am the vue template</h1>",
   data() {
     return {
+      url: "https://www.youtube.com",
       showBooks: true,
       // bookName: "The Alchemist",
       // author: "Paulo Coelho",
@@ -10,9 +11,17 @@ const app = Vue.createApp({
       // x: 0,
       // y: 0,
       books: [
-        { name: "The Alchemist", author: "Paulo Coelho" },
-        { name: "1984", author: "George Orwell" },
-        { name: "To Kill a Mockingbird", author: "Harper Lee" },
+        {
+          name: "The Alchemist",
+          author: "Paulo Coelho",
+          image: "assets/The Alchemist.jpg",
+        },
+        { name: "1984", author: "George Orwell", image: "assets/1984.jpg" },
+        {
+          name: "To Kill a Mockingbird",
+          author: "Harper Lee",
+          image: "assets/To kill a mockingbird.jpg",
+        },
       ],
     };
   },

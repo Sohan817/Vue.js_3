@@ -14,9 +14,14 @@
         <!-- <h4>{{ bookName }}-{{ author }}-{{ age }}</h4> -->
         <!-- v-fot or loop -->
         <ul v-for="book in books">
-          <li><h3>{{ book.name }},{{ book.author }}</h3></li>
+          <li>
+            <img :src="book.image" :alt="book.name" />
+            <h3>{{ book.name }}</h3>
+            <p>{{ book.author }}</p>
+          </li>
         </ul>
       </div>
+
       <!--Click event-->
       <!-- <button v-on:click="age++">Increase Age</button>
       <button v-on:click="age--">Decrease Age</button>
@@ -28,6 +33,13 @@
         <span v-else>Show Books</span>
       </button>
       <!-- <div v-show="showBooks">The Books is showing</div> -->
+
+      <!-- Data or Attribute Binding -->
+      <div>
+        <a v-bind:href="url">Visit YouTube</a>
+        <!-- or -->
+        <a :href="url">Visit YouTube</a>
+      </div>
 
       <!--Mouse Events-->
       <!-- <div class="box" @mouseover="handleMouseEvent($event,5)">Mouse Over</div>
