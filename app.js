@@ -50,6 +50,14 @@ const app = Vue.createApp({
     //   this.x = e.offsetX;
     //   this.y = e.offsetY;
     // },
+    toggleFevorite(book) {
+      book.isFavorite = !book.isFavorite;
+    },
+  },
+  computed: {
+    favouriteBooks() {
+      return this.books.filter((book) => book.isFavorite);
+    },
   },
 });
 app.mount("#app");
