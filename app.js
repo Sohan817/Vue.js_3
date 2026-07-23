@@ -15,12 +15,19 @@ const app = Vue.createApp({
           name: "The Alchemist",
           author: "Paulo Coelho",
           image: "assets/The Alchemist.jpg",
+          isFavorite: true,
         },
-        { name: "1984", author: "George Orwell", image: "assets/1984.jpg" },
+        {
+          name: "1984",
+          author: "George Orwell",
+          image: "assets/1984.jpg",
+          isFavorite: false,
+        },
         {
           name: "To Kill a Mockingbird",
           author: "Harper Lee",
           image: "assets/To kill a mockingbird.jpg",
+          isFavorite: true,
         },
       ],
     };

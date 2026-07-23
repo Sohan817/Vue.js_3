@@ -12,9 +12,9 @@
     <div id="app">
       <div v-if="showBooks">
         <!-- <h4>{{ bookName }}-{{ author }}-{{ age }}</h4> -->
-        <!-- v-fot or loop -->
+        <!-- v-for or loop -->
         <ul v-for="book in books">
-          <li>
+          <li v-bind:class="{favorite:book.isFavorite}">
             <img :src="book.image" :alt="book.name" />
             <h3>{{ book.name }}</h3>
             <p>{{ book.author }}</p>
