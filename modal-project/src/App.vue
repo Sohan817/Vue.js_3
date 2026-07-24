@@ -2,15 +2,20 @@
   <h1>{{ title }}</h1>
   <input type="text" ref="name" />
   <button v-on:click="HandleClick">Button</button>
+  <Modal />
 </template>
 
 <script>
+import Modal from "./components/Modal.vue";
 export default {
   name: "App",
   data() {
     return {
       title: "My First Vue App ):",
     };
+  },
+  components: {
+    Modal,
   },
   methods: {
     HandleClick() {
