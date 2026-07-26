@@ -2,7 +2,7 @@
   <h1>{{ title }}</h1>
   <input type="text" ref="name" />
   <button v-on:click="HandleClick">Button</button>
-  <Modal />
+  <Modal :header="header" v-bind:text="text" theme="sale" />
 </template>
 
 <script>
@@ -12,6 +12,8 @@ export default {
   data() {
     return {
       title: "My First Vue App ):",
+      header: "Sign up for giveaways",
+      text: "Modal Content",
     };
   },
   components: {
