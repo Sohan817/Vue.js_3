@@ -3,14 +3,16 @@
   <input type="text" ref="name" />
   <button v-on:click="HandleClick">Button</button>
   <p>Welcome...</p>
-  <button @click.alt="toggleModal">Open Modal(Alt)</button>
+  <button @click="toggleModal">Open Modal(Alt)</button>
   <div v-if="showModal">
-    <Modal
-      :header="header"
-      v-bind:text="text"
-      theme="sale"
-      @close="toggleModal"
-    />
+    <Modal theme="sale" @close="toggleModal">
+      <h1>Sign up for giveaways!</h1>
+      <p>Modal Content</p>
+      <template v-slot:links>
+        <a href="#">Sing Up</a>
+        <a href="#">Login</a>
+      </template>
+    </Modal>
   </div>
 </template>
 
@@ -22,7 +24,7 @@ export default {
     return {
       title: "My First Vue App ):",
       header: "Sign up for giveaways",
-      text: "Modal Content",
+      text: "",
       showModal: false,
     };
   },
