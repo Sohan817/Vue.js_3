@@ -2,7 +2,16 @@
   <h1>{{ title }}</h1>
   <input type="text" ref="name" />
   <button v-on:click="HandleClick">Button</button>
-  <Modal :header="header" v-bind:text="text" theme="sale" />
+  <p>Welcome...</p>
+  <button @click="toggleModal">Open Modal</button>
+  <div v-if="showModal">
+    <Modal
+      :header="header"
+      v-bind:text="text"
+      theme="sale"
+      @close="toggleModal"
+    />
+  </div>
 </template>
 
 <script>
@@ -14,6 +23,7 @@ export default {
       title: "My First Vue App ):",
       header: "Sign up for giveaways",
       text: "Modal Content",
+      showModal: false,
     };
   },
   components: {
@@ -24,6 +34,9 @@ export default {
       console.log(this.$refs.name);
       this.$refs.name.classList.add("active");
       this.$refs.name.focus();
+    },
+    toggleModal() {
+      this.showModal = !this.showModal;
     },
   },
 };
