@@ -3,7 +3,7 @@
   <input type="text" ref="name" />
   <button v-on:click="HandleClick">Button</button>
   <p>Welcome...</p>
-  <button @click="toggleModal">Open Modal</button>
+  <button @click.alt="toggleModal">Open Modal(Alt)</button>
   <div v-if="showModal">
     <Modal
       :header="header"
