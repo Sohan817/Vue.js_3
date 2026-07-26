@@ -2,10 +2,11 @@
   <h1>{{ title }}</h1>
   <input type="text" ref="name" />
   <button v-on:click="HandleClick">Button</button>
-  <p>Welcome...</p>
+  <p>First modal...</p>
   <button @click="toggleModal">Open Modal</button>
+  <p>Second modal...</p>
   <button @click.alt="toggleModalTwo">Open Modal(Alt)</button>
-  <div v-if="showModal">
+  <div to=".modals" v-if="showModal">
     <Modal theme="sale" @close="toggleModal">
       <h1>Sign up for giveaways!</h1>
       <p>Modal Content</p>
@@ -18,7 +19,7 @@
 
   <!-- Second Modal -->
 
-  <div v-if="showModalTwo">
+  <teleport to=".modals" v-if="showModalTwo">
     <Modal theme="" @close="toggleModalTwo">
       <h1>Sign up for Newsletters!</h1>
       <p>For the latest updates and offers</p>
@@ -27,7 +28,7 @@
         <a href="#">Login</a>
       </template>
     </Modal>
-  </div>
+  </teleport>
 </template>
 
 <script>
@@ -61,7 +62,8 @@ export default {
 </script>
 
 <style>
-#app {
+#app,
+.modals {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
