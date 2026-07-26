@@ -3,11 +3,25 @@
   <input type="text" ref="name" />
   <button v-on:click="HandleClick">Button</button>
   <p>Welcome...</p>
-  <button @click="toggleModal">Open Modal(Alt)</button>
+  <button @click="toggleModal">Open Modal</button>
+  <button @click.alt="toggleModalTwo">Open Modal(Alt)</button>
   <div v-if="showModal">
     <Modal theme="sale" @close="toggleModal">
       <h1>Sign up for giveaways!</h1>
       <p>Modal Content</p>
+      <template v-slot:links>
+        <a href="#">Sing Up</a>
+        <a href="#">Login</a>
+      </template>
+    </Modal>
+  </div>
+
+  <!-- Second Modal -->
+
+  <div v-if="showModalTwo">
+    <Modal theme="" @close="toggleModalTwo">
+      <h1>Sign up for Newsletters!</h1>
+      <p>For the latest updates and offers</p>
       <template v-slot:links>
         <a href="#">Sing Up</a>
         <a href="#">Login</a>
@@ -23,9 +37,8 @@ export default {
   data() {
     return {
       title: "My First Vue App ):",
-      header: "Sign up for giveaways",
-      text: "",
       showModal: false,
+      showModalTwo: false,
     };
   },
   components: {
@@ -39,6 +52,9 @@ export default {
     },
     toggleModal() {
       this.showModal = !this.showModal;
+    },
+    toggleModalTwo() {
+      this.showModalTwo = !this.showModalTwo;
     },
   },
 };
