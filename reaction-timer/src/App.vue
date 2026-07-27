@@ -22,7 +22,6 @@ export default {
       this.isPlaying = true;
       // Random delay between 2 and 7 seconds
       this.delay = 2000 + Math.floor(Math.random() * 5000);
-      console.log(this.delay);
     },
   },
 };
