@@ -2,15 +2,17 @@
   <h1>Reaction Timer</h1>
   <button @click="start" :disabled="isPlaying">Play</button>
   <Block v-if="isPlaying" :delay="delay" @end="endGame" />
-  <p v-if="showResult">Reaction Time:{{ score }} ms</p>
+  <Result v-if="showResult" :score="score" />
 </template>
 
 <script>
 import Block from "./components/Block.vue";
+import Result from "./components/Result.vue";
 export default {
   name: "App",
   components: {
     Block,
+    Result,
   },
   data() {
     return {
@@ -44,5 +46,17 @@ export default {
   text-align: center;
   color: #444;
   margin-top: 60px;
+}
+button {
+  background: fixed;
+  background-color: hsl(170, 100%, 50%);
+  color: #333;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+}
+button[disabled] {
+  opacity: 0.2;
+  cursor: not-allowed;
 }
 </style>
