@@ -2,7 +2,7 @@
   <h1>Job Listings</h1>
   <div v-for="job in jobs" :key="job.id" class="jobs">
     <router-link :to="{ name: 'jobsdetail', params: { id: job.id } }">
-      <h2>{{ job.company }} - {{ job.title }} ({{ job.location }})</h2>
+      <h2>{{ job.title }}</h2>
     </router-link>
   </div>
 </template>
@@ -11,27 +11,14 @@
 export default {
   data() {
     return {
-      jobs: [
-        {
-          id: 1,
-          title: "Frontend Developer",
-          company: "Tech Corp",
-          location: "New York",
-        },
-        {
-          id: 2,
-          title: "Backend Developer",
-          company: "Web Solutions",
-          location: "San Francisco",
-        },
-        {
-          id: 3,
-          title: "Full Stack Developer",
-          company: "Innovatech",
-          location: "Austin",
-        },
-      ],
+      jobs: [],
     };
+  },
+  mounted() {
+    fetch(" http://localhost:3000/jobs")
+      .then((response) => response.json())
+      .then((data) => (this.jobs = data))
+      .catch((error) => console.log(error.message));
   },
 };
 </script>
