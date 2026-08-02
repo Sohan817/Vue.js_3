@@ -1,7 +1,12 @@
 <template>
-  <h1>{{ job.title }}</h1>
-  <p>{{ job.company }}</p>
-  <p>{{ job.location }}</p>
+  <div v-if="job">
+    <h1>{{ job.title }}</h1>
+    <p>{{ job.company }}</p>
+    <p>{{ job.location }}</p>
+  </div>
+  <div v-else>
+    <p>Loading job details...</p>
+  </div>
 </template>
 
 <script>
@@ -17,7 +22,7 @@ export default {
   //     jobId: this.$route.params.id,
   //   };
   // },
-  mouunted() {
+  mounted() {
     fetch(`http://localhost:3000/jobs/${this.id}`)
       .then((response) => response.json())
       .then((data) => (this.job = data))
