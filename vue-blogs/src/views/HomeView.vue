@@ -1,38 +1,23 @@
 <template>
-  <h1>Refs</h1>
-  <div>My name is {{ bio1.name }} and I am {{ bio1.age }} years old.</div>
-  <button @click="handleClickRef">Click Me</button> <br />
-  <h1>Reactive</h1>
-  <div>My name is {{ bio2.name }} and I am {{ bio2.age }} years old.</div>
-  <button @click="handleClickReactive">Click Me</button> <br />
+  <h1>Computed Properties</h1>
+  <input v-model="search" placeholder="Search names..." />
+  <p>{{ search }}</p>
+  <div v-for="name in searchedName" :key="name">{{ name }}</div>
 </template>
 
 <script>
-import { ref, reactive } from "vue";
+import { ref, computed } from "vue";
 export default {
   name: "HomeView",
   setup() {
-    const bio1 = ref({
-      name: "Shohan",
-      age: 27,
+    const search = ref("");
+    const names = ref(["John", "Doe", "Sohan", "Rohit", "Ramesh", "Suresh"]);
+
+    const searchedName = computed(() => {
+      return names.value.filter((name) => name.includes(search.value));
     });
 
-    const bio2 = reactive({
-      name: "Suborna",
-      age: 26,
-    });
-    const handleClickRef = () => {
-      bio1.value.age = 30;
-    };
-    const handleClickReactive = () => {
-      bio2.age = 28;
-    };
-    return {
-      bio1,
-      bio2,
-      handleClickRef,
-      handleClickReactive,
-    };
+    return { search, names, searchedName };
   },
 };
 </script>
