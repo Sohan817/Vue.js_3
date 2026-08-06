@@ -2,7 +2,9 @@
   <div ref="divRef" class="home">
     My name is {{ name }} and I am {{ age }} years old.
   </div>
-  <button @click="handleClick">Click Me</button>
+  <button @click="handleClick">Click Me</button> <br />
+  <input type="text" v-model="name" /> <br />
+  <button @click="age++">Add Age</button>
 </template>
 
 <script>
@@ -10,20 +12,16 @@ import { ref } from "vue";
 export default {
   name: "HomeView",
   setup() {
-    let name = "Shohan";
-    let age = 20;
-    const divRef = ref(null);
-    console.log(divRef, divRef.value); // This will log the DOM element after the component is mounted
+    const name = ref("Shohan");
+    const age = ref(27);
 
     const handleClick = () => {
-      console.log(divRef, divRef.value); // This will log the DOM element when the button is clicked
-      divRef.value.classList.add("clicked");
-      divRef.value.textContent = "Hello Refs"; // This will add a class to the div when the button is clicked
+      name.value = "Nadim";
+      age.value = 30;
     };
     return {
       name,
       age,
-      divRef,
       handleClick,
     };
   },
