@@ -1,5 +1,12 @@
 <template>
-  <BlogLists :blogs="blogs" />
+  <div class="home">
+    <h1>Home</h1>
+    <BlogLists v-if="showBlogs" :blogs="blogs" />
+    <button @click="showBlogs = !showBlogs">
+      {{ showBlogs ? "Hide Blogs" : "Show Blogs" }}
+    </button>
+    <button @click="blogs.pop()">Remove Last Blog</button>
+  </div>
 </template>
 
 <script>
@@ -31,7 +38,8 @@ export default {
         id: 3,
       },
     ]);
-    return { blogs };
+    const showBlogs = ref(true);
+    return { blogs, showBlogs };
   },
 };
 </script>

@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import { onMounted, onUnmounted, onUpdated } from "vue";
 import SingleBlog from "./SingleBlog.vue";
 export default {
   props: ["blogs"],
@@ -13,7 +14,9 @@ export default {
     SingleBlog,
   },
   setup(props) {
-    console.log(props.blogs);
+    onMounted(() => console.log("Mounted BlogLists.vue"));
+    onUnmounted(() => console.log("Unmounted BlogLists.vue"));
+    onUpdated(() => console.log("Updated BlogLists.vue"));
   },
 };
 </script>
