@@ -13,11 +13,7 @@ export default {
   components: {
     SingleBlog,
   },
-  setup(props) {
-    onMounted(() => console.log("Mounted BlogLists.vue"));
-    onUnmounted(() => console.log("Unmounted BlogLists.vue"));
-    onUpdated(() => console.log("Updated BlogLists.vue"));
-  },
+  setup(props) {},
 };
 </script>
 

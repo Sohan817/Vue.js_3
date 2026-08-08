@@ -11,7 +11,7 @@ export default {
   props: ["blog"],
   setup(props) {
     const snippet = computed(() => {
-      return props.blog.content.substring(0, 20) + "...";
+      return props.blog.description.substring(0, 20) + "...";
     });
     return { snippet };
   },

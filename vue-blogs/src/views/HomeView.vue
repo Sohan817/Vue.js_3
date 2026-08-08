@@ -1,7 +1,13 @@
 <template>
   <div class="home">
     <h1>Home</h1>
-    <BlogLists v-if="showBlogs" :blogs="blogs" />
+    <div class="error">
+      {{ error }}
+    </div>
+    <div class="loading" v-if="blogs.length === 0 && !error">Loading...</div>
+    <div class="blogs" v-else>
+      <BlogLists v-if="showBlogs" :blogs="blogs" />
+    </div>
     <button @click="showBlogs = !showBlogs">
       {{ showBlogs ? "Hide Blogs" : "Show Blogs" }}
     </button>
@@ -18,28 +24,42 @@ export default {
     BlogLists,
   },
   setup() {
-    const blogs = ref([
-      {
-        title: "Blog 1",
-        content:
-          "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        id: 1,
-      },
-      {
-        title: "Blog 2",
-        content:
-          "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        id: 2,
-      },
-      {
-        title: "Blog 3",
-        content:
-          "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        id: 3,
-      },
-    ]);
+    const blogs = ref([]);
+    const error = ref(null);
+    const load = async () => {
+      try {
+        const data = await fetch("http://localhost:3000/blogs");
+        if (!data.ok) {
+          throw Error("No data available");
+        }
+        blogs.value = await data.json();
+      } catch (err) {
+        error.value = err.message;
+      }
+    };
+    load();
     const showBlogs = ref(true);
-    return { blogs, showBlogs };
+    return { blogs, showBlogs, error };
   },
 };
 </script>
+<style>
+.loading {
+  color: #666;
+  font-style: italic;
+}
+.error {
+  color: #d32f2f;
+}
+.home {
+  padding: 1rem;
+}
+.blogs {
+  display: flex;
+  flex-direction: column;
+}
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+</style>
