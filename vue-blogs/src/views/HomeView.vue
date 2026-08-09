@@ -17,6 +17,7 @@
 
 <script>
 import BlogLists from "../components/BlogLists.vue";
+import getBlogs from "../composables/getBlogs";
 import { ref } from "vue";
 export default {
   name: "HomeView",
@@ -24,25 +25,15 @@ export default {
     BlogLists,
   },
   setup() {
-    const blogs = ref([]);
-    const error = ref(null);
-    const load = async () => {
-      try {
-        const data = await fetch("http://localhost:3000/blogs");
-        if (!data.ok) {
-          throw Error("No data available");
-        }
-        blogs.value = await data.json();
-      } catch (err) {
-        error.value = err.message;
-      }
-    };
+    const { blogs, error, load } = getBlogs();
     load();
     const showBlogs = ref(true);
+
     return { blogs, showBlogs, error };
   },
 };
 </script>
+
 <style>
 .loading {
   color: #666;
@@ -57,6 +48,7 @@ export default {
 .blogs {
   display: flex;
   flex-direction: column;
+  background-color: rgb(184, 184, 196);
 }
 h1 {
   font-size: 2rem;
