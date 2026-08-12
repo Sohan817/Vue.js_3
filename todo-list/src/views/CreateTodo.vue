@@ -5,18 +5,20 @@
 
   <span v-if="error">{{ error }}</span>
 
-  <form @submit.prevent="addTodo">
+  <form @submit.prevent="handleSubmit">
     <label> Title: </label>
     <input type="text" name="title" v-model="title" />
     <p v-if="titleError">{{ titleError }}</p>
     <label>Complete:</label>
     <select name="completed" v-model="completed">
-      <option :value="true">True</option>
-      <option :value="false">False</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
     </select>
     <label>Date:</label>
     <input type="date" v-model="date" />
-    <div class="submit"><button>Create a Todo</button></div>
+    <div class="submit">
+      <button>Create a Todo</button>
+    </div>
   </form>
 </template>
 
@@ -30,9 +32,12 @@ export default {
     const { title, completed, date, error, addTodo } = addTodos();
     //Handle Error
     const handleSubmit = () => {
-      titleError.value =
-        title.value.length <= 5 ? "Length should be at least 5 character" : "";
-      return titleError.value;
+      if (title.value.length <= 5) {
+        titleError.value = "Length should be at least 5 character";
+        return;
+      }
+      titleError.value = "";
+      addTodo();
     };
     return { title, completed, error, date, handleSubmit, titleError, addTodo };
   },

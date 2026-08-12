@@ -10,15 +10,19 @@
         <tr>
           <th>Title</th>
           <th>Date</th>
+          <th>Completed</th>
           <th>Edit</th>
           <th>Delete</th>
         </tr>
       </thead>
       <tbody v-for="todo in todos" :key="todo.id">
-        <tr v-if="todo.completed">
+        <tr>
           <td>{{ todo.title }}</td>
           <td>{{ todo.date }}</td>
-          <td><button>Edit</button></td>
+          <td>{{ todo.completed }}</td>
+          <router-link :to="{ name: 'EditTodo', params: { id: todo.id } }">
+            <td><button>Edit</button></td>
+          </router-link>
           <td><button>Detele</button></td>
         </tr>
       </tbody>
