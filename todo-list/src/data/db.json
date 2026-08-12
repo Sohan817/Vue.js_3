@@ -17,54 +17,6 @@
       "completed": "Yes",
       "date": "2026-08-14",
       "id": 3
-    },
-    {
-      "title": "I need to finish my todo list",
-      "completed": "No",
-      "date": "2026-08-12",
-      "id": 4
-    },
-    {
-      "title": "Test 1",
-      "completed": "Yes",
-      "date": "2026-08-12",
-      "id": 5
-    },
-    {
-      "title": "Test 2",
-      "completed": "No",
-      "date": "2026-08-15",
-      "id": 6
-    },
-    {
-      "title": "Test 3",
-      "completed": "Yes",
-      "date": "2026-08-12",
-      "id": 7
-    },
-    {
-      "title": "Test 6",
-      "completed": "Yes",
-      "date": "2026-08-14",
-      "id": 8
-    },
-    {
-      "title": "Test 4",
-      "completed": "Yes",
-      "date": "2026-08-14",
-      "id": 9
-    },
-    {
-      "title": "Test 7",
-      "completed": "No",
-      "date": "2026-08-20",
-      "id": 10
-    },
-    {
-      "title": "Test 8",
-      "completed": "Yes",
-      "date": "2026-08-20",
-      "id": 11
     }
   ]
 }

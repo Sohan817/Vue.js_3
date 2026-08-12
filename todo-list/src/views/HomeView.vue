@@ -23,21 +23,39 @@
           <router-link :to="{ name: 'EditTodo', params: { id: todo.id } }">
             <td><button>Edit</button></td>
           </router-link>
-          <td><button>Detele</button></td>
+          <td>
+            <button @click="openDeleteModal(todo.id)">Detele</button>
+          </td>
         </tr>
       </tbody>
     </table>
   </div>
+  <Delete
+    v-if="showDeleteModal"
+    :todiId="selectTodoId"
+    @close="showDeleteModal = false"
+  />
 </template>
 
 <script>
+import Delete from "../components/Delete.vue";
 import getTodos from "../composables/getTodos.js";
+import { ref } from "vue";
 export default {
   name: "HomeView",
+  components: { Delete },
   setup() {
     const { todos, error, load } = getTodos();
     load();
-    return { todos, error };
+
+    let showDeleteModal = ref(false);
+    let selectTodoId = ref(null);
+    const openDeleteModal = (id) => {
+      selectTodoId.value = id;
+      showDeleteModal.value = true;
+    };
+
+    return { todos, error, openDeleteModal, showDeleteModal, selectTodoId };
   },
 };
 </script>
