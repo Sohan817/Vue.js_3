@@ -29,6 +29,10 @@
       </template>
     </Modal>
   </teleport>
+
+  <h3>Counters {{ count }}</h3>
+  <button @click="increment">Increase</button>
+  <button @click="count--">Decrease</button>
 </template>
 
 <script>
@@ -40,6 +44,7 @@ export default {
       title: "My First Vue App ):",
       showModal: false,
       showModalTwo: false,
+      count: 0,
     };
   },
   components: {
@@ -56,6 +61,9 @@ export default {
     },
     toggleModalTwo() {
       this.showModalTwo = !this.showModalTwo;
+    },
+    increment() {
+      this.count += 1;
     },
   },
 };

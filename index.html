@@ -8,61 +8,11 @@
     <title>Document</title>
   </head>
   <body>
-    <h1>Hello Vue :)</h1>
     <div id="app">
-      <div v-if="showBooks">
-        <!-- <h4>{{ bookName }}-{{ author }}-{{ age }}</h4> -->
-        <!-- v-for or loop -->
-        <ul v-for="book in books">
-          <li
-            v-bind:class="{favorite:book.isFavorite}"
-            v-on:click="toggleFevorite(book)"
-          >
-            <img :src="book.image" :alt="book.name" />
-            <h3>{{ book.name }}</h3>
-            <p>{{ book.author }}</p>
-          </li>
-        </ul>
+      <h3>Counter {{increment}}</h3>
 
-        <!-- Computive Properties: -->
-        <ul v-for="book in favouriteBooks">
-          <li
-            v-bind:class="{favorite:book.isFavorite}"
-            v-on:click="toggleFevorite(book)"
-          >
-            <img :src="book.image" :alt="book.name" />
-            <h3>{{ book.name }}</h3>
-            <p>{{ book.author }}</p>
-          </li>
-        </ul>
-      </div>
-
-      <!--Click event-->
-      <!-- <button v-on:click="age++">Increase Age</button>
-      <button v-on:click="age--">Decrease Age</button>
-      <div @click="changeTitle('Bango Boltu Attojiboni')">Change Title</div> -->
-
-      <!--Conditional Rendering-->
-      <button v-on:click="toggleShowBooks">
-        <span v-if="showBooks">Hide Books</span>
-        <span v-else>Show Books</span>
-      </button>
-      <!-- <div v-show="showBooks">The Books is showing</div> -->
-
-      <!-- Data or Attribute Binding -->
-      <div>
-        <a v-bind:href="url">Visit YouTube</a>
-        <!-- or -->
-        <a :href="url">Visit YouTube</a>
-      </div>
-
-      <!--Mouse Events-->
-      <!-- <div class="box" @mouseover="handleMouseEvent($event,5)">Mouse Over</div>
-      <div class="box" @mouseleave="handleMouseEvent">Mouse Leave</div>
-      <div class="box" @dblclick="handleMouseEvent">Double Click</div>
-      <div class="box" @mousemove="handleMouseMove">
-        Position: {{ x }}, {{ y }}
-      </div> -->
+      <button @click="increaseValue">Increase</button>
+      <button v-on:click="DecreaseValue">Decrease</button>
     </div>
     <script src="app.js"></script>
   </body>
