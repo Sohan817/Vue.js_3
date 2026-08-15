@@ -3,8 +3,7 @@
     <h1>Todo List</h1>
     <dev class="input-row">
       <input type="text" placeholder="Add a task" v-model="newTask" />
-      <p>{{ newTask }}</p>
-      <button>Add</button>
+      <button @click="addTask">Add</button>
     </dev>
   </div>
 </template>
@@ -12,6 +11,22 @@
 <script setup>
 import { ref } from "vue";
 const newTask = ref(null);
+const tasks = ref([]);
+
+const addTask = () => {
+  const task = newTask.value.trim();
+  if (!task) {
+    return;
+  }
+  tasks.value.push({
+    id: Date.now(),
+    todo: task,
+    completed: false,
+    favourite: false,
+  });
+  newTask.value = "";
+  console.log(tasks);
+};
 </script>
 
 <style>
