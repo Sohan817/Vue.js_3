@@ -5,6 +5,12 @@
       <input type="text" placeholder="Add a task" v-model="newTask" />
       <button @click="addTask">Add</button>
     </dev>
+    <ul class="task-list" v-for="task in tasks" :key="task.id">
+      <li>
+        <input type="checkbox" v-model="task.completed" />
+        <span>{{ task.todo }}</span>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -44,5 +50,22 @@ const addTask = () => {
   margin: 2rem auto;
   font-family: sans-serif;
   text-align: center;
+}
+.input-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+input {
+  flex-grow: 1;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
 }
 </style>
