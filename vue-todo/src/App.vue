@@ -6,7 +6,8 @@
       <button @click="addTask">Add</button>
     </dev>
     <ul class="task-list" v-for="task in tasks" :key="task.id">
-      <li>
+      <li :class="{ done: task.completed }">
+        <button @click="removeTodo(task.id)" class="remove-item">X</button>
         <input type="checkbox" v-model="task.completed" />
         <span>{{ task.todo }}</span>
       </li>
@@ -33,6 +34,12 @@ const addTask = () => {
   newTask.value = "";
   console.log(tasks);
 };
+
+function removeTodo(id) {
+  tasks.value = tasks.value.filter((t) => {
+    return t.id != id;
+  });
+}
 </script>
 
 <style>
@@ -67,5 +74,19 @@ button {
   border: 1px solid #ccc;
   border-radius: 6px;
   cursor: pointer;
+}
+.task-list li.done span {
+  text-decoration: line-through;
+}
+.remove-item {
+  background: #e53e3e;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
+}
+.remove-item:hover {
+  background: #e53e3e;
 }
 </style>
