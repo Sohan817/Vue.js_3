@@ -41,7 +41,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, watch, onMounted } from "vue";
 import EditModal from "./components/EditModal.vue";
 
 const newTask = ref(null);
@@ -108,6 +108,20 @@ const filteredTasks = computed(() => {
     // "All"
     return true;
   });
+});
+
+watch(
+  tasks,
+  () => {
+    localStorage.setItem("tasks", JSON.stringify(tasks.value));
+  },
+  { deep: true },
+);
+onMounted(() => {
+  const saved = localStorage.getItem("tasks");
+  if (saved) {
+    tasks.value = JSON.parse(saved);
+  }
 });
 </script>
 
