@@ -9,6 +9,7 @@
         Title="Vue Courses"
         Price="9.9"
         Description="0 to Hero vue course"
+        @purchase="console.log('button clicked')"
       ></CourseItem>
     </div>
     <h2 class="text-2xl font-medium">Your Courses</h2>
