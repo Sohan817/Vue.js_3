@@ -18,6 +18,20 @@
     </div>
     <ul class="task-list">
       <li
+        v-if="!search"
+        :class="{ done: task.completed }"
+        v-for="task in filteredTasks"
+        :key="task.id"
+      >
+        <button @click="removeTodo(task)" class="remove-item">X</button>
+        <button @click="toggleFav(task)" class="fav">
+          {{ task.favourite ? "★" : "☆" }}
+        </button>
+        <input type="checkbox" v-model="task.completed" />
+        <span @click="toggleTodal(task.id)">{{ task.todo }}</span>
+      </li>
+      <li
+        v-else
         :class="{ done: task.completed }"
         v-for="task in filteredTasks"
         :key="task.id"
