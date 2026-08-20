@@ -9,13 +9,15 @@
         Title="Vue Courses"
         Price="9.9"
         Description="0 to Hero vue course"
-        @purchase="console.log('button clicked')"
+        @click="console.log('button clicked')"
       ></CourseItem>
     </div>
     <h2 class="text-2xl font-medium">Your Courses</h2>
+    <BookingItem v-for="i in 2" :key="i"></BookingItem>
   </div>
 </template>
 
 <script setup>
 import CourseItem from "./components/CourseItem.vue";
+import BookingItem from "./components/BookingItem.vue";
 </script>
