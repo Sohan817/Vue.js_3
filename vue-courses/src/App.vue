@@ -15,7 +15,13 @@
       ></CourseItem>
     </div>
     <h2 class="text-2xl font-medium">Your Courses</h2>
-    <BookingItem v-for="i in 2" :key="i"></BookingItem>
+    <div v-if="loading"><SceletonBookingCourses /></div>
+    <BookingItem
+      v-else
+      v-for="booking in bookings"
+      :key="booking.id"
+      :bookings="booking"
+    ></BookingItem>
   </div>
 </template>
 
@@ -24,9 +30,11 @@ import CourseItem from "./components/CourseItem.vue";
 import { onMounted, ref } from "vue";
 import BookingItem from "./components/BookingItem.vue";
 import SkeletonCourses from "./components/SkeletonCourses.vue";
+import SceletonBookingCourses from "./components/SceletonBookingCourses.vue";
 const error = ref("");
 const courses = ref([]);
 const loading = ref(false);
+const bookings = ref([]);
 
 //Fetch data from database
 const fetchData = async () => {
@@ -65,7 +73,22 @@ const bookCourses = async (course) => {
     error.value = e.message;
   }
 };
+//Fetch data from database
+const fetchBookingData = async () => {
+  loading.value = true;
+  try {
+    const response = await fetch("http://localhost:3000/bookings");
+    bookings.value = await response.json();
+    if (!response.ok) {
+      throw new Error("Faild to load data");
+    }
+    loading.value = false;
+  } catch (e) {
+    error.value = e.message;
+  }
+};
 onMounted(() => {
   fetchData();
+  fetchBookingData();
 });
 </script>
