@@ -1,0 +1,26 @@
+{
+  "courses": [
+    {
+      "id": 1,
+      "title": "Vue 3",
+      "price": 0.99,
+      "description": "0 to advance vue courses",
+      "bought": false
+    },
+    {
+      "id": 2,
+      "title": "Javascript",
+      "price": 1.99,
+      "description": "0 to advance Javascript courses",
+      "bought": false
+    },
+    {
+      "id": 3,
+      "title": "PHP",
+      "price": 1.49,
+      "description": "0 to advance vue PHP",
+      "bought": false
+    }
+  ],
+  "bookings": []
+}

@@ -2,7 +2,9 @@
   <CardSection class="p-4">
     <div class="flex justify-between items-center">
       <div>Vue Courses</div>
-      <RoundedButton @click="console.log('reported')">Report</RoundedButton>
+      <RoundedButton @click="console.log('reported')" variant="danger"
+        >Report</RoundedButton
+      >
     </div>
   </CardSection>
 </template>

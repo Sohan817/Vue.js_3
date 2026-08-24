@@ -20,5 +20,6 @@ defineProps({
   Title: String,
   Price: Number,
   Description: String,
+  datas: Object,
 });
 </script>
