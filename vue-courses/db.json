@@ -24,18 +24,11 @@
   ],
   "bookings": [
     {
-      "id": "1787583278727",
+      "id": 1,
       "title": "Vue 3",
       "price": 0.99,
       "description": "0 to advance vue courses",
-      "status": "pending"
-    },
-    {
-      "id": "1787583291162",
-      "title": "Javascript",
-      "price": 1.99,
-      "description": "0 to advance Javascript courses",
-      "status": "pending"
+      "status": "confirmed"
     }
   ]
 }

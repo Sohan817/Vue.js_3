@@ -2,8 +2,9 @@
   <CardSection class="p-4">
     <div class="flex justify-between items-center">
       <div>{{ bookings.title }}</div>
-      <RoundedButton @click="console.log('reported')" variant="danger"
-        >Report</RoundedButton
+      <div>{{ bookings.status }}</div>
+      <RoundedButton @click="$emit('removeBooking')" variant="danger"
+        >Remove</RoundedButton
       >
     </div>
   </CardSection>
@@ -17,6 +18,7 @@ defineProps({
     type: Object,
   },
 });
+defineEmits(["removeBooking"]);
 </script>
 
 <style></style>
