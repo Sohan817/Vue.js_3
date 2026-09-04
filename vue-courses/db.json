@@ -29,6 +29,13 @@
       "price": 0.99,
       "description": "0 to advance vue courses",
       "status": "confirmed"
+    },
+    {
+      "id": 2,
+      "title": "Javascript",
+      "price": 1.99,
+      "description": "0 to advance Javascript courses",
+      "status": "confirmed"
     }
   ]
 }
