@@ -8,7 +8,7 @@
       :Title="course.title"
       :Price="course.price"
       :Description="course.description"
-      @click="$emit('register', course)"
+      @click="bookCourses(course)"
     ></CourseItem>
   </div>
 </template>
@@ -17,6 +17,9 @@
 import CourseItem from "./CourseItem.vue";
 import { onMounted, ref } from "vue";
 import SkeletonCourses from "./SkeletonCourses.vue";
+
+import useBooking from "@/Composibles/useBooking.js";
+const { bookCourses } = useBooking();
 
 const courses = ref([]);
 const loading = ref(false);
@@ -36,8 +39,6 @@ const fetchData = async () => {
     error.value = e.message;
   }
 };
-
-defineEmits(["register"]);
 
 onMounted(() => {
   fetchData();
