@@ -3,7 +3,7 @@
     <div class="flex justify-between items-center">
       <div>{{ bookings.title }}</div>
       <div>
-        <component :is="statusIcon" />
+        <component :is="statusIcon" :class="{ 'animate-spin': pending }" />
       </div>
       <RoundedButton @click="$emit('removeBooking')" variant="danger"
         >Remove</RoundedButton

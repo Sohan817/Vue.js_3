@@ -24,17 +24,17 @@
   ],
   "bookings": [
     {
-      "id": 2,
-      "title": "Javascript",
-      "price": 1.99,
-      "description": "0 to advance Javascript courses",
-      "status": "confirmed"
-    },
-    {
       "id": 1,
       "title": "Vue 3",
       "price": 0.99,
       "description": "0 to advance vue courses",
+      "status": "confirmed"
+    },
+    {
+      "id": 2,
+      "title": "Javascript",
+      "price": 1.99,
+      "description": "0 to advance Javascript courses",
       "status": "confirmed"
     }
   ]
