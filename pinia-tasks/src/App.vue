@@ -9,6 +9,9 @@
         <button @click="filteredTask = 'favorites'">Favorites</button>
       </nav>
     </header>
+    <!-- Add Task Form -->
+    <AddTask />
+
     <!-- Task List -->
 
     <div class="task-list" v-if="filteredTask === 'all'">
@@ -28,6 +31,7 @@
 </template>
 
 <script>
+import AddTask from "./components/AddTask.vue";
 import TaskDetail from "./components/TaskDetail.vue";
 import { useTaskStore } from "./stores/TaskStore.js";
 import { ref } from "vue";
@@ -35,6 +39,7 @@ import { ref } from "vue";
 export default {
   components: {
     TaskDetail,
+    AddTask,
   },
   setup() {
     const taskStore = useTaskStore();
