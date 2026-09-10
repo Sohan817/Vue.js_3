@@ -1,11 +1,8 @@
 import { defineStore } from "pinia";
 export const useTaskStore = defineStore("task", {
   state: () => ({
-    tasks: [
-      { id: 1, title: "Task 1", isFavorite: false },
-      { id: 2, title: "Task 2", isFavorite: true },
-      { id: 3, title: "Task 3", isFavorite: false },
-    ],
+    tasks: [],
+    loading: false,
   }),
   getters: {
     favs() {
@@ -21,15 +18,41 @@ export const useTaskStore = defineStore("task", {
     },
   },
   actions: {
-    addTask(task) {
-      this.tasks.push(task);
+    async getTask() {
+      this.loading = true;
+      const response = await fetch("http://localhost:3000/tasks");
+      const data = await response.json();
+      this.tasks = data;
+      this.loading = false;
     },
-    deleteTask(id) {
+    async addTask(task) {
+      const response = await fetch("http://localhost:3000/tasks", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(task),
+      });
+      const data = await response.json();
+      this.tasks.push(data);
+    },
+    async deleteTask(id) {
       this.tasks = this.tasks.filter((t) => t.id !== id);
+      const response = await fetch(`http://localhost:3000/tasks/${id}`, {
+        method: "DELETE",
+      });
     },
-    toggleFav(id) {
+    async toggleFav(id) {
       const task = this.tasks.find((t) => t.id === id);
       task.isFavorite = !task.isFavorite;
+      const response = await fetch(`http://localhost:3000/tasks/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ isFavorite: task.isFavorite }),
+      });
+      const data = await response.json();
     },
   },
 });

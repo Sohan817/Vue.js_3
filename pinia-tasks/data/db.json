@@ -1,0 +1,25 @@
+{
+  "tasks": [
+    {
+      "id": "1",
+      "title": "Wake up at 11 AM",
+      "isFavorite": true
+    },
+    {
+      "id": "2",
+      "title": "Take a shower",
+      "isFavorite": false
+    },
+    {
+      "id": "3",
+      "title": "Have breakfast",
+      "isFavorite": false
+    },
+    {
+      "id": "upLqRQMQlwg",
+      "title": "Go office",
+      "isFavorite": false
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

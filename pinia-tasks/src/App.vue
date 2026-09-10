@@ -12,8 +12,10 @@
     <!-- Add Task Form -->
     <AddTask />
 
-    <!-- Task List -->
+    <!-- Loading Indicator -->
+    <div class="loading" v-if="taskStore.loading">Loading tasks...</div>
 
+    <!-- Task List -->
     <div class="task-list" v-if="filteredTask === 'all'">
       <p>You have {{ taskStore.totalCount }} tasks</p>
       <div v-for="task in taskStore.tasks" :key="task.id">
@@ -44,6 +46,7 @@ export default {
   setup() {
     const taskStore = useTaskStore();
     const filteredTask = ref("all");
+    taskStore.getTask();
     return { taskStore, filteredTask };
   },
 };
