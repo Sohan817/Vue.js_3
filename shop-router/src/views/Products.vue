@@ -1,6 +1,6 @@
 <template>
   <h1>Product Details</h1>
-  <p>Product ID: {{ route.params.id }}</p>
+  <p>Product Id: {{ route.params.id }}</p>
 </template>
 
 <script setup>
