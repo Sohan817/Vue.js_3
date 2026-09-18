@@ -1,4 +1,4 @@
-<template>Link</template>
+<template>{{ tab.label }}</template>
 <script setup>
 import { Tab } from "@/types";
 

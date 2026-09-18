@@ -1,11 +1,32 @@
-<script setup></script>
-
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <div class="mx-w-2xl mx-auto px-4">
+    <nav
+      class="font-medium text-center text-gray-500 border-b border-gray-200 mb-4"
+    >
+      <ul class="flex flex-warp">
+        <li v-for="tab in tabs" :key="tab.key">
+          <TabButton :tab="tab" :current-tab="currentTab"></TabButton>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </template>
-
-<style scoped></style>
+<script setup>
+import { ref } from "vue";
+import TabButton from "@/components/TabButton.vue";
+const currentTab = ref("General");
+const tabs = [
+  {
+    key: "General",
+    label: "General",
+  },
+  {
+    key: "Notification",
+    label: "Notification",
+  },
+  {
+    key: "Privacy",
+    label: "Privacy",
+  },
+];
+</script>

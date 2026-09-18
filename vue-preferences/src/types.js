@@ -1,4 +1,4 @@
-export const TabKey = "General " | "Notification" | "Privacy";
+export const TabKey = "General" | "Notification" | "Privacy";
 
 export const Tab = {
   key: TabKey,
